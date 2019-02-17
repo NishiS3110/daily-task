@@ -6,7 +6,8 @@
           <v-btn
             color="success"
             class="login-button"
-            @click="login">Googleアカウントでログイン</v-btn>
+            @click="login">Googleアカウントでログイン
+          </v-btn>
         </div>
         <div class="item">
           <p class="login-notice">
@@ -29,7 +30,6 @@
 
 <script>
 import firebase from 'firebase'
-import { close } from 'fs';
 
 export default {
   data () {
@@ -58,17 +58,18 @@ export default {
 </script>
 
 <style>
-  .item {
-    margin: 10px;
-  }
-  .login-button {
-    font-size: 1.5em;
-    text-transform: none;
-  }
-  .login-notice {
-    font-size: 0.8em;
-  }
-  .progress-circle {
-    text-align: center;
-  }
+.item {
+  margin: 10px;
+}
+.login-button {
+  margin-bottom: 20px;
+  text-transform: none;
+  font-size: 1.2rem;
+}
+.login-notice {
+  font-size: 0.7rem;
+}
+.progress-circle {
+  text-align: center;
+}
 </style>

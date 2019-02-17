@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <v-layout>
     <AddTask/>
     <TaskList/>
-  </div>
+  </v-layout>
 </template>
 
 <script>
