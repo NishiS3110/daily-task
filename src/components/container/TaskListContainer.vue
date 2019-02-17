@@ -1,5 +1,5 @@
 <template>
-  <v-layout>
+  <v-layout justify-center column>
     <AddTask/>
     <TaskList/>
   </v-layout>
