@@ -1,17 +1,17 @@
 import firebase from 'firebase'
 
-const db = firebase.firestore();
+const db = firebase.firestore()
 
 // initial state
 const state = {
   tasks: []
 }
   
-  // getters
+// getters
 const getters = {
   newTasks: state => {
     return state.tasks.sort(function(a, b) {
-      return Date.parse( a.date ) - Date.parse( b.date );
+      return Date.parse( a.date ) - Date.parse( b.date )
     })
   }
 }
@@ -26,12 +26,12 @@ const actions = {
       date: payload.date
     }).then(function (docRef) {
     }).catch(function (error) {
-      console.error('Error adding task: ', error);
-    });
+      console.error('Error adding task: ', error)
+    })
   },
   get ({ commit }) {
     db.collection('tasks').get().then(snap => {
-      const tasks = [];
+      const tasks = []
       snap.forEach(doc => {
         let data = {
           'id': doc.id,
@@ -55,15 +55,15 @@ const actions = {
     .then(function() {
     })
     .catch(function(error) {
-      console.error('Error editing task: ', error);
-    });
+      console.error('Error editing task: ', error)
+    })
   },
   delete ({ commit }, payload) {
     db.collection("tasks").doc(payload.id).delete()
     .then(function() {
     })
     .catch(function(error) {
-      console.error('Error deleting task: ', error);
+      console.error('Error deleting task: ', error)
     })
   }
 }
@@ -83,4 +83,3 @@ export default {
   actions,
   mutations
 }
-  

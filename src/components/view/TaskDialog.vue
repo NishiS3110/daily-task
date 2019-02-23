@@ -171,7 +171,6 @@ export default {
         'completed': this.completed,
         'date': this.date,
       }
-      console.log('Dialogのコンポーネント' + this.taskId)
       this.$store.dispatch('task/update', data)
       this.$store.dispatch('task/get')
       this.dialog = false     
