@@ -2,7 +2,8 @@
   <v-toolbar>
     <v-toolbar-items>
       <v-btn flat @click="goToTasKList">タスク一覧</v-btn>
-      <v-btn flat @click="gotToProfile">プロフィール</v-btn>
+      <!-- あとで追加 -->
+      <!-- <v-btn flat @click="gotToProfile">プロフィール</v-btn> -->
     </v-toolbar-items>
     <v-spacer></v-spacer>
 
@@ -20,9 +21,9 @@ export default {
     goToTasKList () {
 　    this.$router.push({ name: 'TaskList' })
     },
-    gotToProfile () {
-      console.log(プロフィールが押された)
-    }
+    // gotToProfile () {
+    //   console.log(プロフィールが押された)
+    // }
   }
 }
 </script>
