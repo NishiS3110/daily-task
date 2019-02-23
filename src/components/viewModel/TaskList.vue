@@ -94,7 +94,6 @@ export default {
       this.isTaskDialog = true
     },
     deleteTask (task) {
-      console.log('削除')
       this.taskId = task.id
       this.dialogTitle = 'タスクの削除'
       this.dialogText = '『' + task.title + '』を削除しますか'
