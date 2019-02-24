@@ -11,9 +11,9 @@
         <v-container grid-list-md>
           <v-layout wrap>
             <v-flex xs12>
-              <v-text-field 
+              <v-text-field
                 v-model="title"
-                label="タイトル*" 
+                label="タイトル*"
                 required>
               </v-text-field>
             </v-flex>
@@ -63,14 +63,14 @@
         <v-btn color="blue darken-1" flat @click="closeDialog">閉じる</v-btn>
         <v-btn
           v-if="isSaveButton"
-          color="blue darken-1" 
-          flat 
+          color="blue darken-1"
+          flat
           @click="saveTask">保存
         </v-btn>
         <v-btn
           v-if="isEditButton"
-          color="blue darken-1" 
-          flat 
+          color="blue darken-1"
+          flat
           @click="editTask">更新
         </v-btn>
       </v-card-actions>
@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import {DIALOG_TYPE} from '@/constant/type.js';
+import { DIALOG_TYPE } from '@/constant/type.js'
 
 export default {
   props: {
@@ -97,7 +97,7 @@ export default {
     },
     taskDate: {
       type: String,
-      default: new Date().toISOString().substr(0, 10),
+      default: new Date().toISOString().substr(0, 10)
     },
     taskCompleted: {
       type: Boolean,
@@ -106,7 +106,7 @@ export default {
     dialogType: {
       type: String,
       required: true
-    },
+    }
   },
   data () {
     return {
@@ -115,7 +115,7 @@ export default {
       detail: this.taskDetail,
       date: this.taskDate,
       completed: this.taskCompleted,
-      menu: false,
+      menu: false
     }
   },
   computed: {
@@ -130,20 +130,20 @@ export default {
     },
     nudgeLeft: function () {
       let nudgeLeft
-      if(window.innerWidth <= 320){
+      if (window.innerWidth <= 320) {
         nudgeLeft = 40
-      }else if(window.innerWidth <= 750){
+      } else if (window.innerWidth <= 750) {
         nudgeLeft = 0
-      }else{
+      } else {
         nudgeLeft = -40
       }
       return nudgeLeft
-    },
+    }
   },
   watch: {
     // ダイアログの外側を押下した場合にもemitする
     dialog: function () {
-      if(!this.dialog){
+      if (!this.dialog) {
         this.$emit('close')
       }
     }
@@ -157,7 +157,7 @@ export default {
         'title': this.title,
         'detail': this.detail,
         'completed': this.completed,
-        'date': this.date,
+        'date': this.date
       }
       this.$store.dispatch('task/create', data)
       this.$store.dispatch('task/get')
@@ -169,11 +169,11 @@ export default {
         'title': this.title,
         'detail': this.detail,
         'completed': this.completed,
-        'date': this.date,
+        'date': this.date
       }
       this.$store.dispatch('task/update', data)
       this.$store.dispatch('task/get')
-      this.dialog = false     
+      this.dialog = false
     }
   }
 }

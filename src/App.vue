@@ -26,8 +26,8 @@ export default {
     }
   },
   computed: {
-    displayHeader: function(){
-      return this.$route.name　!== "Login"
+    displayHeader: function () {
+      return this.$route.name !== 'Login'
     }
   }
 }

@@ -1,8 +1,5 @@
 <template>
-　 <v-dialog
-    v-model="dialog"
-    max-width="450"
-　 >
+  <v-dialog v-model="dialog" max-width="450">
     <v-card>
       <v-card-title class="headline">{{this.dialogTitle}}</v-card-title>
       <v-card-text>
@@ -11,14 +8,14 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
-          color="blue darken-1" 
+          color="blue darken-1"
           flat="flat"
-　         @click="dialog = false"
+          @click="dialog = false"
         >
           {{this.dialogLeftButtonText}}
         </v-btn>
         <v-btn
-          color="blue darken-1" 
+          color="blue darken-1"
           flat="flat"
           @click="deleteTask"
         >
@@ -26,13 +23,10 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-　 </v-dialog>
+  </v-dialog>
 </template>
 
 <script>
-import TaskDialog from '@/components/view/TaskDialog'
-import {DIALOG_TYPE} from '@/constant/type.js';
-
 export default {
   props: {
     taskId: {
@@ -54,7 +48,7 @@ export default {
     dialogRightButtonText: {
       type: String,
       default: 'OK'
-    },
+    }
   },
   data () {
     return {
@@ -64,7 +58,7 @@ export default {
   watch: {
     // ダイアログの外側を押下した場合にもemitする
     dialog: function () {
-      if(!this.dialog){
+      if (!this.dialog) {
         this.$emit('close')
       }
     }
@@ -75,12 +69,12 @@ export default {
     },
     deleteTask () {
       const data = {
-        'id': this.taskId,
+        'id': this.taskId
       }
       this.$store.dispatch('task/delete', data)
       this.$store.dispatch('task/get')
       this.dialog = false
-    },
+    }
   }
 }
 </script>

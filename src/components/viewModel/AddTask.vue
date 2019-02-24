@@ -1,12 +1,12 @@
 <template>
   <div>
-    <v-btn 
-      slot="activator" 
-      color="red" 
+    <v-btn
+      slot="activator"
+      color="red"
       dark
       @click="openDialog">タスクの追加
     </v-btn>
-    <TaskDialog 
+    <TaskDialog
       v-if="dialog"
       :dialogType="dialogType"
       @close="dialog = false"/>
@@ -15,11 +15,11 @@
 
 <script>
 import TaskDialog from '@/components/view/TaskDialog'
-import {DIALOG_TYPE} from '@/constant/type.js';
+import { DIALOG_TYPE } from '@/constant/type.js'
 
 export default {
   components: {
-    TaskDialog,
+    TaskDialog
   },
   data () {
     return {
