@@ -1,6 +1,6 @@
 <template>
   <v-flex xs12>
-    <div　v-if="canDisplay">
+    <div v-if="canDisplay">
       <v-layout align-center justify-center column>
         <div class="item">
           <v-btn
@@ -45,7 +45,7 @@ export default {
     this.$store.dispatch('auth/setUser', user)
     if (user) {
       this.$router.push('/')
-    }else{
+    } else {
       this.canDisplay = true
     }
   },

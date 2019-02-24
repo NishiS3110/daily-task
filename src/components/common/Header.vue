@@ -19,8 +19,8 @@
 export default {
   methods: {
     goToTasKList () {
-　    this.$router.push({ name: 'TaskList' })
-    },
+     this.$router.push({ name: 'TaskList' })
+    }
     // gotToProfile () {
     //   console.log(プロフィールが押された)
     // }

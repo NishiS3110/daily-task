@@ -28,7 +28,7 @@
         </v-icon>
       </v-list-tile>
     </v-list>
-    <TaskDialog 
+    <TaskDialog
       v-if="isTaskDialog"
       :taskId="taskId"
       :taskTitle="taskTitle"
@@ -38,7 +38,7 @@
       :dialogType="dialogType"
       @close="isTaskDialog = false"
     />
-    <MessageDialog 
+    <MessageDialog
       v-if="isMessageDialog"
       :taskId="taskId"
       :dialogTitle="dialogTitle"
@@ -53,7 +53,7 @@
 <script>
 import TaskDialog from '@/components/view/TaskDialog'
 import MessageDialog from '@/components/view/MessageDialog'
-import {DIALOG_TYPE} from '@/constant/type.js';
+import { DIALOG_TYPE } from '@/constant/type.js'
 export default {
   components: {
     TaskDialog,
@@ -67,7 +67,7 @@ export default {
       taskTitle: null,
       taskDetail: null,
       taskDate: null,
-      taskCompleted :false,
+      taskCompleted: false,
       dialogType: DIALOG_TYPE.EDIT,
       dialogTitle: null,
       dialogText: null,
@@ -76,11 +76,11 @@ export default {
     }
   },
   computed: {
-    tasks: function(){
+    tasks: function () {
       return this.$store.getters['task/newTasks']
     }
   },
-  created: function(){
+  created: function () {
     this.$store.dispatch('task/get')
   },
 
@@ -107,7 +107,7 @@ export default {
 
 <style>
 .uncompleted{
-  background-color: orange;  
+  background-color: orange;
 }
 .completed {
   background-color: green;
