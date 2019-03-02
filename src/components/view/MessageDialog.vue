@@ -19,7 +19,7 @@
         <v-btn
           color="blue darken-1"
           flat="flat"
-          @click="deleteTask"
+          @click.native="deleteTask"
           class="dialog-right-button"
         >
           {{this.dialogRightButtonText}}

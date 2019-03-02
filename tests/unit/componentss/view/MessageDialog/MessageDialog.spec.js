@@ -42,11 +42,23 @@ describe('描画のテスト', () => {
     })
 
     describe('ダイアログの左側のボタン押下', () => {
+      const dialogLeftButtonWrapper = wrapper.find('.dialog-left-button')
+      //「@click.native="closeDialog"」というコードになっているのは、「@click="closeDialog"」だt
+      // 下記のtriggerで発火しないため
+      dialogLeftButtonWrapper.trigger('click')
+
       it('closeイベントがemitされていること', () => {
-        const dialogLeftButtonWrapper = wrapper.find('.dialog-left-button')
-        //「@click.native="closeDialog"」というコードになっているのは、「@click="closeDialog"」だt
-        // 下記のtriggerで発火しないため
-        dialogLeftButtonWrapper.trigger('click')
+        expect(wrapper.emitted('close')).toBeTruthy()
+      })
+    })
+
+    describe('ダイアログの右側のボタン押下', () => {
+      const dialogRightButtonWrapper = wrapper.find('.dialog-right-button')
+      dialogRightButtonWrapper.trigger('click')
+
+      // Vuexのテストコードを追記
+
+      it('closeイベントがemitされていること', () => {
         expect(wrapper.emitted('close')).toBeTruthy()
       })
     })
