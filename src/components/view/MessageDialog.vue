@@ -1,8 +1,8 @@
 <template>
   <v-dialog v-model="dialog" max-width="450">
     <v-card>
-      <v-card-title class="headline">{{this.dialogTitle}}</v-card-title>
-      <v-card-text>
+      <v-card-title class="dialog-title">{{this.dialogTitle}}</v-card-title>
+      <v-card-text class="dialog-body">
         {{this.dialogText}}
       </v-card-text>
       <v-card-actions>
@@ -10,14 +10,17 @@
         <v-btn
           color="blue darken-1"
           flat="flat"
-          @click="dialog = false"
+          @click.native="closeDialog"
+          class="dialog-left-button"
         >
           {{this.dialogLeftButtonText}}
         </v-btn>
+        <div @click="closeDialog" class="test">あ</div>
         <v-btn
           color="blue darken-1"
           flat="flat"
           @click="deleteTask"
+          class="dialog-right-button"
         >
           {{this.dialogRightButtonText}}
         </v-btn>
@@ -65,7 +68,7 @@ export default {
   },
   methods: {
     closeDialog () {
-      this.$emit('close')
+      this.dialog = false
     },
     deleteTask () {
       const data = {
