@@ -15,7 +15,6 @@
         >
           {{this.dialogLeftButtonText}}
         </v-btn>
-        <div @click="closeDialog" class="test">あ</div>
         <v-btn
           color="blue darken-1"
           flat="flat"
