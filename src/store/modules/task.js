@@ -1,6 +1,6 @@
-import firebase from 'firebase'
-
-const db = firebase.firestore()
+import {
+  db
+} from '@/plugins/firebase'
 
 // initial state
 const state = {
@@ -17,7 +17,7 @@ const getters = {
 }
 
 // actions
-const actions = {
+let actions = {
   create ({ commit }, payload) {
     db.collection("tasks").add({
       title: payload.title,

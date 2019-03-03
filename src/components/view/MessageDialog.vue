@@ -15,7 +15,6 @@
         >
           {{this.dialogLeftButtonText}}
         </v-btn>
-        <div @click="closeDialog" class="test">あ</div>
         <v-btn
           color="blue darken-1"
           flat="flat"
@@ -30,6 +29,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   props: {
     taskId: {
@@ -67,6 +67,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions('task', [
+      'delete',
+      'get'
+    ]),
     closeDialog () {
       this.dialog = false
     },
@@ -74,8 +78,7 @@ export default {
       const data = {
         'id': this.taskId
       }
-      this.$store.dispatch('task/delete', data)
-      this.$store.dispatch('task/get')
+      this.delete(data)
       this.dialog = false
     }
   }
@@ -83,5 +86,4 @@ export default {
 </script>
 
 <style>
-
 </style>

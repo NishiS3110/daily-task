@@ -45,7 +45,7 @@
       :dialogText="dialogText"
       :dialogLeftButtonText="dialogLeftButtonText"
       :dialogRightButtonText="dialogRightButtonText"
-      @close="isMessageDialog = false"
+      @close="closeMessageDialog"
     />
   </div>
 </template>
@@ -100,6 +100,10 @@ export default {
       this.dialogLeftButtonText = '閉じる'
       this.dialogRightButtonText = '削除'
       this.isMessageDialog = true
+    },
+    closeMessageDialog () {
+      this.isMessageDialog = false
+      this.$store.dispatch('task/get')
     }
   }
 }
