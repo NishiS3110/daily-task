@@ -19,15 +19,14 @@ const router = new Router({
       path: '/',
       name: 'TaskList',
       component: TaskListContainer,
-      meta: { requiresAuth: true },
+      meta: { requiresAuth: true }
     },
     {
       path: '*',
       redirect: '/'
     }
-  ],
+  ]
 })
 router.beforeEach(authorizeToken)
 
 export default router
-
