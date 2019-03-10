@@ -20,7 +20,14 @@ const actions = {
   },
   setUser ({ commit }, payload) {
     commit('setUser', payload)
-  }
+  },
+  logout({ commit }) {
+    return new Promise((resolve, reject) => {
+          firebase.auth().signOut()
+          .then(() => resolve())
+          .catch(() => reject())
+    })
+  },
 }
   
 
