@@ -38,31 +38,31 @@
       :dialogType="dialogType"
       @close="isTaskDialog = false"
     />
-    <MessageDialog
-      v-if="isMessageDialog"
+    <DeleteTaskDialog
+      v-if="isDeleteTaskDialog"
       :taskId="taskId"
       :dialogTitle="dialogTitle"
       :dialogText="dialogText"
       :dialogLeftButtonText="dialogLeftButtonText"
       :dialogRightButtonText="dialogRightButtonText"
-      @close="closeMessageDialog"
+      @close="closeDeleteTaskDialog"
     />
   </div>
 </template>
 
 <script>
 import TaskDialog from '@/components/view/TaskDialog'
-import MessageDialog from '@/components/view/MessageDialog'
+import DeleteTaskDialog from '@/components/view/DeleteTaskDialog'
 import { DIALOG_TYPE } from '@/constant/type.js'
 export default {
   components: {
     TaskDialog,
-    MessageDialog
+    DeleteTaskDialog
   },
   data () {
     return {
       isTaskDialog: false,
-      isMessageDialog: false,
+      isDeleteTaskDialog: false,
       taskId: null,
       taskTitle: null,
       taskDetail: null,
@@ -99,10 +99,10 @@ export default {
       this.dialogText = '『' + task.title + '』を削除しますか'
       this.dialogLeftButtonText = '閉じる'
       this.dialogRightButtonText = '削除'
-      this.isMessageDialog = true
+      this.isDeleteTaskDialog = true
     },
-    closeMessageDialog () {
-      this.isMessageDialog = false
+    closeDeleteTaskDialog () {
+      this.isDeleteTaskDialog = false
       this.$store.dispatch('task/get')
     }
   }

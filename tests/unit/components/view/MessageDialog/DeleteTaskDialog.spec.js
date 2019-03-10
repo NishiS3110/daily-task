@@ -5,11 +5,11 @@ import {
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Vuetify from 'vuetify'
-import MessageDialog from '@/components/view/MessageDialog.vue'
+import DeleteTaskDialog from '@/components/view/DeleteTaskDialog.vue'
 import task from '@/store/modules/task'
 import {
   testData
-} from './MessageDialog-test-data'
+} from './DeleteTaskDialog-test-data'
 
 const localVue = createLocalVue()
 
@@ -17,10 +17,10 @@ localVue.use(Vuex)
 
 Vue.use(Vuetify)
 
-describe('MessageDialogのテスト', () => {
+describe('DeleteTaskDialogのテスト', () => {
   describe('描画のテスト', () => {
     describe('propsとして渡された値が表示されているかの確認', () => {
-      const wrapper = shallowMount(MessageDialog, {
+      const wrapper = shallowMount(DeleteTaskDialog, {
         propsData: testData[0]
       })
 
@@ -45,7 +45,7 @@ describe('MessageDialogのテスト', () => {
 
   describe('イベントのテスト', () => {
     describe('ダイアログの左側のボタン押下', () => {
-      const wrapper = shallowMount(MessageDialog, {
+      const wrapper = shallowMount(DeleteTaskDialog, {
         propsData: testData[0],
       })
 
@@ -79,7 +79,7 @@ describe('MessageDialogのテスト', () => {
         }
       })
 
-      const wrapper = shallowMount(MessageDialog, {
+      const wrapper = shallowMount(DeleteTaskDialog, {
         propsData: testData[0],
         store,
         localVue
