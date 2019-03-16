@@ -41,10 +41,7 @@
     <DeleteTaskDialog
       v-if="isDeleteTaskDialog"
       :taskId="taskId"
-      :dialogTitle="dialogTitle"
-      :dialogText="dialogText"
-      :dialogLeftButtonText="dialogLeftButtonText"
-      :dialogRightButtonText="dialogRightButtonText"
+      :taskTitle="taskTitle"
       @close="closeDeleteTaskDialog"
     />
   </div>
@@ -68,11 +65,7 @@ export default {
       taskDetail: null,
       taskDate: null,
       taskCompleted: false,
-      dialogType: DIALOG_TYPE.EDIT,
-      dialogTitle: null,
-      dialogText: null,
-      dialogLeftButtonText: null,
-      dialogRightButtonText: null
+      dialogType: DIALOG_TYPE.EDIT
     }
   },
   computed: {
@@ -95,10 +88,7 @@ export default {
     },
     deleteTask (task) {
       this.taskId = task.id
-      this.dialogTitle = 'タスクの削除'
-      this.dialogText = '『' + task.title + '』を削除しますか'
-      this.dialogLeftButtonText = '閉じる'
-      this.dialogRightButtonText = '削除'
+      this.taskTitle = task.title
       this.isDeleteTaskDialog = true
     },
     closeDeleteTaskDialog () {

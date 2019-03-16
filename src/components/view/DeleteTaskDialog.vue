@@ -1,9 +1,9 @@
 <template>
   <v-dialog v-model="dialog" max-width="450">
     <v-card>
-      <v-card-title class="dialog-title">{{this.dialogTitle}}</v-card-title>
+      <v-card-title class="dialog-title">タスクの削除</v-card-title>
       <v-card-text class="dialog-body">
-        {{this.dialogText}}
+        『{{this.taskTitle}}』を削除しますか
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -13,7 +13,7 @@
           @click.native="closeDialog"
           class="dialog-left-button"
         >
-          {{this.dialogLeftButtonText}}
+          閉じる
         </v-btn>
         <v-btn
           color="blue darken-1"
@@ -21,7 +21,7 @@
           @click.native="deleteTask"
           class="dialog-right-button"
         >
-          {{this.dialogRightButtonText}}
+          削除
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -36,21 +36,9 @@ export default {
       type: String,
       default: null
     },
-    dialogTitle: {
+    taskTitle: {
       type: String,
       default: ''
-    },
-    dialogText: {
-      type: String,
-      default: ''
-    },
-    dialogLeftButtonText: {
-      type: String,
-      default: 'キャンセル'
-    },
-    dialogRightButtonText: {
-      type: String,
-      default: 'OK'
     }
   },
   data () {
