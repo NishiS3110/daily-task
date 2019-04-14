@@ -9,6 +9,9 @@ const state = {
 const getters = {
   isAuthenticated (state) {
     return !!state.user
+  },
+  userImageURL (state) {
+    return state.user.photoURL
   }
 }
 

@@ -9,7 +9,11 @@
         :class="{ completed: task.completed, uncompleted: !task.completed }"
       >
         <v-list-tile-avatar>
-          <v-icon medium>info</v-icon>
+          <img 
+            v-if="userImageURL"
+            :src="userImageURL"
+          >
+          <v-icon v-else medium>info</v-icon>
         </v-list-tile-avatar>
         <v-list-tile-content>
           <v-list-tile-title>{{ task.title }}</v-list-tile-title>
@@ -71,6 +75,9 @@ export default {
   computed: {
     tasks: function () {
       return this.$store.getters['task/newTasks']
+    },
+    userImageURL: function () {
+      return this.$store.getters['auth/userImageURL'] 
     }
   },
   created: function () {
