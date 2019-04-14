@@ -6,7 +6,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Vuetify from 'vuetify'
 import DeleteTaskDialog from '@/components/view/DeleteTaskDialog.vue'
-import task from '@/store/modules/task'
 import {
   testData
 } from './DeleteTaskDialog-test-data'
@@ -23,22 +22,10 @@ describe('DeleteTaskDialogのテスト', () => {
       const wrapper = shallowMount(DeleteTaskDialog, {
         propsData: testData[0]
       })
-
-      it('ダイアログのタイトル部分の確認', () => {
-        const dialogTitleWrapper = wrapper.find('.dialog-title')
-        expect(dialogTitleWrapper.text()).toBe(testData[0].dialogTitle)
-      })
+      
       it('ダイアログの本文部分の確認', () => {
         const dialogBodyWrapper = wrapper.find('.dialog-body')
-        expect(dialogBodyWrapper.text()).toBe(testData[0].dialogText)
-      })
-      it('ダイアログの左側のボタン文言の確認', () => {
-        const dialogLeftButtonWrapper = wrapper.find('.dialog-left-button')
-        expect(dialogLeftButtonWrapper.text()).toBe(testData[0].dialogLeftButtonText)
-      })
-      it('ダイアログの右側のボタン文言の確認', () => {
-        const dialogRightButtonWrapper = wrapper.find('.dialog-right-button')
-        expect(dialogRightButtonWrapper.text()).toBe(testData[0].dialogRightButtonText)
+        expect(dialogBodyWrapper.text()).toBe('『' + testData[0].taskTitle + '』を削除しますか')
       })
     })
   })
