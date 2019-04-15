@@ -60,6 +60,16 @@ export default {
     TaskDialog,
     DeleteTaskDialog
   },
+  props: {
+    tasks: {
+      type: Array,
+      required: true
+    },
+    userImageURL: {
+      type: String,
+      default: ""
+    }
+　},
   data () {
     return {
       isTaskDialog: false,
@@ -72,18 +82,6 @@ export default {
       dialogType: DIALOG_TYPE.EDIT
     }
   },
-  computed: {
-    tasks: function () {
-      return this.$store.getters['task/newTasks']
-    },
-    userImageURL: function () {
-      return this.$store.getters['auth/userImageURL'] 
-    }
-  },
-  created: function () {
-    this.$store.dispatch('task/get')
-  },
-
   methods: {
     editTask (task) {
       this.taskId = task.id
@@ -100,7 +98,6 @@ export default {
     },
     closeDeleteTaskDialog () {
       this.isDeleteTaskDialog = false
-      this.$store.dispatch('task/get')
     }
   }
 }
