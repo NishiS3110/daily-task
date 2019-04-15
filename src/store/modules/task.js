@@ -18,13 +18,14 @@ const getters = {
 
 // actions
 let actions = {
-  create ({ commit }, payload) {
+  create ({ dispatch }, payload) {
     db.collection("tasks").add({
       title: payload.title,
       detail: payload.detail,
       completed: payload.completed,
       date: payload.date
     }).then(function (docRef) {
+      dispatch('get')
     }).catch(function (error) {
       console.error('Error adding task: ', error)
     })
@@ -45,7 +46,7 @@ let actions = {
       commit('setTask', tasks)
     })
   },
-  update ({ commit }, payload) {
+  update ({ dispatch }, payload) {
     db.collection("tasks").doc(payload.id).update({
       title: payload.title,
       detail: payload.detail,
@@ -53,6 +54,7 @@ let actions = {
       date: payload.date
     })
     .then(function() {
+      dispatch('get')
     })
     .catch(function(error) {
       console.error('Error editing task: ', error)

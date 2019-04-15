@@ -160,7 +160,6 @@ export default {
         'date': this.date
       }
       this.$store.dispatch('task/create', data)
-      this.$store.dispatch('task/get')
       this.dialog = false
     },
     editTask () {
@@ -172,7 +171,6 @@ export default {
         'date': this.date
       }
       this.$store.dispatch('task/update', data)
-      this.$store.dispatch('task/get')
       this.dialog = false
     }
   }
