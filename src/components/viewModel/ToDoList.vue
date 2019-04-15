@@ -1,16 +1,21 @@
 <template>
-  <TaskList
-    v-if="tasks"
-    :tasks="tasks"
-    :userImageURL="userImageURL"
-  />
+  <div>
+    <AddTask/>
+    <TaskList
+      v-if="tasks"
+      :tasks="tasks"
+      :userImageURL="userImageURL"
+    />
+  </div>
 </template>
 
 <script>
+import AddTask from '@/components/viewModel/AddTask'
 import TaskList from '@/components/view/TaskList'
 
 export default {
   components: {
+    AddTask,
     TaskList
   },
   computed: {
