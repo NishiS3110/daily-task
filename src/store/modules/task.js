@@ -58,9 +58,10 @@ let actions = {
       console.error('Error editing task: ', error)
     })
   },
-  delete ({ commit }, payload) {
+  delete ({ dispatch }, payload) {
     db.collection("tasks").doc(payload.id).delete()
     .then(function() {
+      dispatch('get')
     })
     .catch(function(error) {
       console.error('Error deleting task: ', error)

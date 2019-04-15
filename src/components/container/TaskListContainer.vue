@@ -1,18 +1,18 @@
 <template>
   <v-layout justify-center column>
     <AddTask/>
-    <TaskList/>
+    <ToDoList/>
   </v-layout>
 </template>
 
 <script>
 import AddTask from '@/components/viewModel/AddTask'
-import TaskList from '@/components/viewModel/TaskList'
+import ToDoList from '@/components/viewModel/ToDoList'
 export default {
   name: 'TaskListContainer',
   components: {
     AddTask,
-    TaskList
+    ToDoList
   }
 }
 </script>

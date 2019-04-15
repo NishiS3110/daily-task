@@ -34,7 +34,7 @@ export default {
   props: {
     taskId: {
       type: String,
-      default: null
+      required: true
     },
     taskTitle: {
       type: String,
@@ -56,8 +56,7 @@ export default {
   },
   methods: {
     ...mapActions('task', [
-      'delete',
-      'get'
+      'delete'
     ]),
     closeDialog () {
       this.dialog = false
