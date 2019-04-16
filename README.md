@@ -8,8 +8,8 @@ Vue.jsで作成したToDoリストアプリです。
 * タスク登録/更新/削除機能
 
 ### 使用技術
-* Vue.js
-* Vuetify
-* Firebase
-* Jest
-* CircleCI
+* JSフレームワーク：Vue.js
+* UIコンポーネントライブラリ：Vuetify
+* Baas：Firebase
+* ユニットテストツール：Jest
+* CIツール：CircleCI
