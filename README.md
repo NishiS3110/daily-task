@@ -1,34 +1,15 @@
 # daily-task
 
-## Project setup
-```
-yarn install
-```
+### 概要
+Vue.jsで作成したToDoリストアプリです。
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+### 機能一覧
+* ログイン/ログアウト機能
+* タスク登録/更新/削除機能
 
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Run your unit tests
-```
-yarn run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 使用技術
+* Vue.js
+* Vuetify
+* Firebase
+* Jest
+* CircleCI
