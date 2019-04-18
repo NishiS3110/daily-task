@@ -26,7 +26,7 @@
         </v-list-tile-action-text> -->
         <v-icon
           color="grey lighten-1"
-          @click.stop="deleteTask(task)"
+          @click.stop="openDeleteTaskDialog(task)"
         >
           delete
         </v-icon>
@@ -44,9 +44,9 @@
     />
     <DeleteTaskDialog
       v-if="isDeleteTaskDialog"
-      :taskId="taskId"
       :taskTitle="taskTitle"
       @close="closeDeleteTaskDialog"
+      @deleteTask="deleteTask"
     />
   </div>
 </template>
@@ -91,13 +91,16 @@ export default {
       this.taskCompleted = task.completed
       this.isTaskDialog = true
     },
-    deleteTask (task) {
+    openDeleteTaskDialog (task) {
       this.taskId = task.id
       this.taskTitle = task.title
       this.isDeleteTaskDialog = true
     },
     closeDeleteTaskDialog () {
       this.isDeleteTaskDialog = false
+    },
+    deleteTask () {
+      this.$emit('deleteTask', this.taskId, () => {this.isDeleteTaskDialog = false})
     }
   }
 }

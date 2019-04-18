@@ -47,48 +47,15 @@ describe('DeleteTaskDialogのテスト', () => {
     })
 
     describe('ダイアログの右側のボタン押下', () => {
-      let actions
-      let store
-
-      // beforeEachを使用しないのは一回のclickで、VuexのActionsのdeleteが呼び出されることと
-      // closeイベントがemitされていることを確認したいため
-      actions = {
-        delete: jest.fn(),
-        get: jest.fn()
-      }
-
-      store = new Vuex.Store({
-        modules: {
-          task: {
-            namespaced: true,
-            actions
-          }
-        }
-      })
-
       const wrapper = shallowMount(DeleteTaskDialog, {
         propsData: testData[0],
-        store,
-        localVue
       })
 
       const dialogRightButtonWrapper = wrapper.find('.dialog-right-button')
       dialogRightButtonWrapper.trigger('click')
 
-      it('VuexのActionsのdeleteが呼び出されること', () => {
-        expect(actions.delete).toHaveBeenCalled()
-      })
-
-      it('VuexのActionsのdeleteが呼び出し時のペイロードが想定通りであること', () => {
-        const data = {
-          'id': testData[0].taskId
-        }
-        // dispatchの引数は、contextとpayloadだけではなく3つ目があるÏ
-        expect(actions.delete).toBeCalledWith(expect.anything(), data, undefined)
-      })
-
-      it('closeイベントがemitされていること', () => {
-        expect(wrapper.emitted('close')).toBeTruthy()
+      it('deleteTaskイベントがemitされていること', () => {
+        expect(wrapper.emitted('deleteTask')).toBeTruthy()
       })
     })
   })

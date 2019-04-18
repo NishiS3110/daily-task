@@ -29,13 +29,8 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 export default {
   props: {
-    taskId: {
-      type: String,
-      required: true
-    },
     taskTitle: {
       type: String,
       default: ''
@@ -55,18 +50,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions('task', [
-      'delete'
-    ]),
     closeDialog () {
-      this.dialog = false
+      this.$emit('close')
     },
     deleteTask () {
-      const data = {
-        'id': this.taskId
-      }
-      this.delete(data)
-      this.dialog = false
+      this.$emit('deleteTask')
     }
   }
 }
