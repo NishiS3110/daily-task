@@ -1,10 +1,12 @@
 <template>
   <div>
-    <AddTask/>
+    <AddTask
+      :userId="userId"
+      :userImageURL="userImageURL"
+    />
     <TaskList
       v-if="tasks"
       :tasks="tasks"
-      :userImageURL="userImageURL"
       @deleteTask="deleteTask"
     />
   </div>
@@ -23,6 +25,9 @@ export default {
   computed: {
     tasks: function () {
       return this.$store.getters['task/newTasks']
+    },
+    userId: function () {
+      return this.$store.getters['auth/userId']
     },
     userImageURL: function () {
       return this.$store.getters['auth/userImageURL'] 

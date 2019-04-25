@@ -8,6 +8,8 @@
     </v-btn>
     <TaskDialog
       v-if="dialog"
+      :userId="userId"
+      :userImageURL="userImageURL"
       :dialogType="dialogType"
       @close="dialog = false"/>
   </div>
@@ -21,6 +23,16 @@ export default {
   components: {
     TaskDialog
   },
+  props: {
+    userId: {
+      type: String,
+      required: true
+    },
+    userImageURL: {
+      type: String,
+      default: ""
+    }
+　},
   data () {
     return {
       dialog: false,

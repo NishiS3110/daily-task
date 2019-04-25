@@ -23,7 +23,9 @@ let actions = {
       title: payload.title,
       detail: payload.detail,
       completed: payload.completed,
-      date: payload.date
+      date: payload.date,
+      userId: payload.userId,
+      userImageURL: payload.userImageURL
     }).then(function (docRef) {
       dispatch('get')
     }).catch(function (error) {
@@ -40,6 +42,8 @@ let actions = {
           'detail': doc.data().detail,
           'completed': doc.data().completed,
           'date': doc.data().date,
+          'userId': doc.data().userId,
+          'userImageURL': doc.data().userImageURL
         }
         tasks.push(data)
       })
