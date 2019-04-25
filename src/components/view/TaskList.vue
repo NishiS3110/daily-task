@@ -10,8 +10,8 @@
       >
         <v-list-tile-avatar>
           <img 
-            v-if="userImageURL"
-            :src="userImageURL"
+            v-if="task.userImageURL"
+            :src="task.userImageURL"
           >
           <v-icon v-else medium>info</v-icon>
         </v-list-tile-avatar>
@@ -64,10 +64,6 @@ export default {
     tasks: {
       type: Array,
       required: true
-    },
-    userImageURL: {
-      type: String,
-      default: ""
     }
 　},
   data () {

@@ -103,6 +103,14 @@ export default {
       type: Boolean,
       default: false
     },
+    userId: {
+      type: String,
+      required: true
+    },
+    userImageURL: {
+      type: String,
+      default: ""
+    },
     dialogType: {
       type: String,
       required: true
@@ -157,7 +165,9 @@ export default {
         'title': this.title,
         'detail': this.detail,
         'completed': this.completed,
-        'date': this.date
+        'date': this.date,
+        'userId': this.userId,
+        'userImageURL': this.userImageURL
       }
       this.$store.dispatch('task/create', data)
       this.dialog = false
