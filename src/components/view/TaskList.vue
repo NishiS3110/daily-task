@@ -41,6 +41,7 @@
       :taskCompleted="taskCompleted"
       :dialogType="dialogType"
       @close="isTaskDialog = false"
+      @updateTask="updateTask"
     />
     <DeleteTaskDialog
       v-if="isDeleteTaskDialog"
@@ -75,7 +76,7 @@ export default {
       taskDetail: null,
       taskDate: null,
       taskCompleted: false,
-      dialogType: DIALOG_TYPE.EDIT
+      dialogType: DIALOG_TYPE.UPDATE
     }
   },
   methods: {
@@ -97,6 +98,9 @@ export default {
     },
     deleteTask () {
       this.$emit('deleteTask', this.taskId, () => {this.isDeleteTaskDialog = false})
+    },
+    updateTask (task) {
+      this.$emit('updateTask', task, () => {this.isTaskDialog = false})
     }
   }
 }

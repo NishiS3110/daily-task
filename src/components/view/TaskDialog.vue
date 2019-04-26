@@ -68,10 +68,10 @@
           @click="addTask">追加
         </v-btn>
         <v-btn
-          v-if="isEditButton"
+          v-if="isUpdateButton"
           color="blue darken-1"
           flat
-          @click="editTask">更新
+          @click="updateTask">更新
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -122,8 +122,8 @@ export default {
     isAddButton: function () {
       return this.dialogType === DIALOG_TYPE.ADD
     },
-    isEditButton: function () {
-      return this.dialogType === DIALOG_TYPE.EDIT
+    isUpdateButton: function () {
+      return this.dialogType === DIALOG_TYPE.UPDATE
     },
     displayCompleted: function () {
       return this.completed ? '完了済' : '未完了'
@@ -161,16 +161,15 @@ export default {
       }
       this.$emit('addTask', task)
     },
-    editTask () {
-      const data = {
+    updateTask () {
+      const task = {
         'id': this.taskId,
         'title': this.title,
         'detail': this.detail,
         'completed': this.completed,
         'date': this.date
       }
-      this.$store.dispatch('task/update', data)
-      this.dialog = false
+      this.$emit('updateTask', task)
     }
   }
 }

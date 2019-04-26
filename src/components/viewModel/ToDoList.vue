@@ -9,6 +9,7 @@
       v-if="tasks"
       :tasks="tasks"
       @deleteTask="deleteTask"
+      @updateTask="updateTask"
     />
   </div>
 </template>
@@ -40,7 +41,8 @@ export default {
   methods: {
     ...mapActions('task', [
       'add',
-      'delete'
+      'delete',
+      'update'
     ]),
     addTask (task, callback) {
       const user = {
@@ -56,6 +58,10 @@ export default {
         'id': taskId
       }
       this.delete(data)
+      callback()
+    },
+    updateTask (updatingtask, callback) {
+      this.update(updatingtask)
       callback()
     },
   }
