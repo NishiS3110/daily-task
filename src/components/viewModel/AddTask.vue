@@ -8,10 +8,9 @@
     </v-btn>
     <TaskDialog
       v-if="dialog"
-      :userId="userId"
-      :userImageURL="userImageURL"
       :dialogType="dialogType"
-      @close="dialog = false"/>
+      @close="dialog = false"
+      @addTask="addTask"/>
   </div>
 </template>
 
@@ -23,16 +22,6 @@ export default {
   components: {
     TaskDialog
   },
-  props: {
-    userId: {
-      type: String,
-      required: true
-    },
-    userImageURL: {
-      type: String,
-      default: ""
-    }
-　},
   data () {
     return {
       dialog: false,
@@ -44,7 +33,10 @@ export default {
   methods: {
     openDialog () {
       this.dialog = true
-    }
+    },
+    addTask (task) {
+      this.$emit('addTask', task, () => {this.dialog = false})
+    },
   }
 }
 </script>

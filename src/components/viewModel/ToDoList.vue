@@ -3,11 +3,13 @@
     <AddTask
       :userId="userId"
       :userImageURL="userImageURL"
+      @addTask="addTask"
     />
     <TaskList
       v-if="tasks"
       :tasks="tasks"
       @deleteTask="deleteTask"
+      @updateTask="updateTask"
     />
   </div>
 </template>
@@ -38,13 +40,25 @@ export default {
   },
   methods: {
     ...mapActions('task', [
-      'delete'
+      'add',
+      'delete',
+      'update'
     ]),
-    deleteTask (taskId, callback) {
-      const data = {
-        'id': taskId
+    addTask (task, callback) {
+      const user = {
+        'userId': this.userId,
+        'userImageURL': this.userImageURL
       }
-      this.delete(data)
+      const addingTask = Object.assign({}, task, user);
+      this.add(addingTask)
+      callback()
+    },
+    deleteTask (deletingTask, callback) {
+      this.delete(deletingTask)
+      callback()
+    },
+    updateTask (updatingtask, callback) {
+      this.update(updatingtask)
       callback()
     },
   }

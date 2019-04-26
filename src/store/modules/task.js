@@ -18,7 +18,7 @@ const getters = {
 
 // actions
 let actions = {
-  create ({ dispatch }, payload) {
+  add ({ dispatch }, payload) {
     db.collection("tasks").add({
       title: payload.title,
       detail: payload.detail,
