@@ -32,7 +32,7 @@ export default {
       return this.$store.getters['auth/userId']
     },
     userImageURL: function () {
-      return this.$store.getters['auth/userImageURL'] 
+      return this.$store.getters['auth/userImageURL']
     }
   },
   created: function () {
@@ -49,7 +49,7 @@ export default {
         'userId': this.userId,
         'userImageURL': this.userImageURL
       }
-      const addingTask = Object.assign({}, task, user);
+      const addingTask = Object.assign({}, task, user)
       this.add(addingTask)
       callback()
     },
@@ -60,7 +60,7 @@ export default {
     updateTask (updatingtask, callback) {
       this.update(updatingtask)
       callback()
-    },
+    }
   }
 }
 </script>

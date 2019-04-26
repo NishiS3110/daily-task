@@ -3,4 +3,4 @@ const DIALOG_TYPE = Object.freeze({
   UPDATE: '1'
 })
 
-export { DIALOG_TYPE };
+export { DIALOG_TYPE }

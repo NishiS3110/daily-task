@@ -6,12 +6,12 @@ import {
 const state = {
   tasks: []
 }
-  
+
 // getters
 const getters = {
   newTasks: state => {
-    return state.tasks.sort(function(a, b) {
-      return Date.parse( a.date ) - Date.parse( b.date )
+    return state.tasks.sort(function (a, b) {
+      return Date.parse(a.date) - Date.parse(b.date)
     })
   }
 }
@@ -19,7 +19,7 @@ const getters = {
 // actions
 let actions = {
   add ({ dispatch }, payload) {
-    db.collection("tasks").add({
+    db.collection('tasks').add({
       title: payload.title,
       detail: payload.detail,
       completed: payload.completed,
@@ -51,30 +51,29 @@ let actions = {
     })
   },
   update ({ dispatch }, payload) {
-    db.collection("tasks").doc(payload.id).update({
+    db.collection('tasks').doc(payload.id).update({
       title: payload.title,
       detail: payload.detail,
       completed: payload.completed,
       date: payload.date
     })
-    .then(function() {
-      dispatch('get')
-    })
-    .catch(function(error) {
-      console.error('Error editing task: ', error)
-    })
+      .then(function () {
+        dispatch('get')
+      })
+      .catch(function (error) {
+        console.error('Error editing task: ', error)
+      })
   },
   delete ({ dispatch }, payload) {
-    db.collection("tasks").doc(payload.id).delete()
-    .then(function() {
-      dispatch('get')
-    })
-    .catch(function(error) {
-      console.error('Error deleting task: ', error)
-    })
+    db.collection('tasks').doc(payload.id).delete()
+      .then(function () {
+        dispatch('get')
+      })
+      .catch(function (error) {
+        console.error('Error deleting task: ', error)
+      })
   }
 }
-  
 
 // mutations
 const mutations = {
@@ -82,7 +81,7 @@ const mutations = {
     state.tasks = payload
   }
 }
-  
+
 export default {
   namespaced: true,
   state,

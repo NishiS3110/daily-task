@@ -1,6 +1,6 @@
 const testData = [
-    {
-        taskTitle: 'テスト-タスクタイトル',
-    }
+  {
+    taskTitle: 'テスト-タスクタイトル'
+  }
 ]
 export { testData }

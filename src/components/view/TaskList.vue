@@ -9,7 +9,7 @@
         :class="{ completed: task.completed, uncompleted: !task.completed }"
       >
         <v-list-tile-avatar>
-          <img 
+          <img
             v-if="task.userImageURL"
             :src="task.userImageURL"
           >
@@ -66,7 +66,7 @@ export default {
       type: Array,
       required: true
     }
-　},
+  },
   data () {
     return {
       isTaskDialog: false,
@@ -100,10 +100,10 @@ export default {
       const task = {
         'id': this.taskId
       }
-      this.$emit('deleteTask', task, () => {this.isDeleteTaskDialog = false})
+      this.$emit('deleteTask', task, () => { this.isDeleteTaskDialog = false })
     },
     updateTask (task) {
-      this.$emit('updateTask', task, () => {this.isTaskDialog = false})
+      this.$emit('updateTask', task, () => { this.isTaskDialog = false })
     }
   }
 }

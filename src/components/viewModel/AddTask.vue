@@ -35,8 +35,8 @@ export default {
       this.dialog = true
     },
     addTask (task) {
-      this.$emit('addTask', task, () => {this.dialog = false})
-    },
+      this.$emit('addTask', task, () => { this.dialog = false })
+    }
   }
 }
 </script>
