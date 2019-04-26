@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     goToTasKList () {
-     this.$router.push({ name: 'TaskList' })
+      this.$router.push({ name: 'TaskList' })
     },
     openDialog () {
       this.dialogTitle = 'ログアウト'

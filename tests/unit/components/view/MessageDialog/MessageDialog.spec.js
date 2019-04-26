@@ -39,11 +39,11 @@ describe('MessageDialogのテスト', () => {
   describe('イベントのテスト', () => {
     describe('ダイアログの左側のボタン押下', () => {
       const wrapper = shallowMount(MessageDialog, {
-        propsData: testData[0],
+        propsData: testData[0]
       })
 
       const dialogLeftButtonWrapper = wrapper.find('.dialog-left-button')
-      //「@click.native="closeDialog"」というコードになっているのは、「@click="closeDialog"」だt
+      // 「@click.native="closeDialog"」というコードになっているのは、「@click="closeDialog"」だと
       // 下記のtriggerで発火しないため
       dialogLeftButtonWrapper.trigger('click')
 
@@ -54,7 +54,7 @@ describe('MessageDialogのテスト', () => {
 
     describe('ダイアログの右側のボタン押下', () => {
       const wrapper = shallowMount(MessageDialog, {
-        propsData: testData[0],
+        propsData: testData[0]
       })
 
       const dialogRightButtonWrapper = wrapper.find('.dialog-right-button')

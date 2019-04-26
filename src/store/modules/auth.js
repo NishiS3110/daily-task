@@ -4,17 +4,17 @@ import firebase from 'firebase'
 const state = {
   user: null
 }
-  
+
 // getters
 const getters = {
   isAuthenticated (state) {
     return !!state.user
   },
-  userId(state) {
-    return state.user.uid
+  userId (state) {
+    return state.user ? state.user.uid : ''
   },
   userImageURL (state) {
-    return state.user.photoURL
+    return state.user ? state.user.photoURL : ''
   }
 }
 
@@ -27,15 +27,14 @@ const actions = {
   setUser ({ commit }, payload) {
     commit('setUser', payload)
   },
-  logout({ commit }) {
+  logout ({ commit }) {
     return new Promise((resolve, reject) => {
-          firebase.auth().signOut()
-          .then(() => resolve())
-          .catch(() => reject())
+      firebase.auth().signOut()
+        .then(() => resolve())
+        .catch(() => reject(new Error('logout failed')))
     })
-  },
+  }
 }
-  
 
 // mutations
 const mutations = {
@@ -43,7 +42,7 @@ const mutations = {
     state.user = payload
   }
 }
-  
+
 export default {
   namespaced: true,
   state,
@@ -51,4 +50,3 @@ export default {
   actions,
   mutations
 }
-  

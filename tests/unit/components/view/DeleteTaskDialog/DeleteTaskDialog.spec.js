@@ -22,7 +22,7 @@ describe('DeleteTaskDialogのテスト', () => {
       const wrapper = shallowMount(DeleteTaskDialog, {
         propsData: testData[0]
       })
-      
+
       it('ダイアログの本文部分の確認', () => {
         const dialogBodyWrapper = wrapper.find('.dialog-body')
         expect(dialogBodyWrapper.text()).toBe('『' + testData[0].taskTitle + '』を削除しますか')
@@ -33,11 +33,11 @@ describe('DeleteTaskDialogのテスト', () => {
   describe('イベントのテスト', () => {
     describe('ダイアログの左側のボタン押下', () => {
       const wrapper = shallowMount(DeleteTaskDialog, {
-        propsData: testData[0],
+        propsData: testData[0]
       })
 
       const dialogLeftButtonWrapper = wrapper.find('.dialog-left-button')
-      //「@click.native="closeDialog"」というコードになっているのは、「@click="closeDialog"」だt
+      // 「@click.native="closeDialog"」というコードになっているのは、「@click="closeDialog"」だと
       // 下記のtriggerで発火しないため
       dialogLeftButtonWrapper.trigger('click')
 
@@ -48,7 +48,7 @@ describe('DeleteTaskDialogのテスト', () => {
 
     describe('ダイアログの右側のボタン押下', () => {
       const wrapper = shallowMount(DeleteTaskDialog, {
-        propsData: testData[0],
+        propsData: testData[0]
       })
 
       const dialogRightButtonWrapper = wrapper.find('.dialog-right-button')
