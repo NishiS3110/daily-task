@@ -11,10 +11,10 @@ const getters = {
     return !!state.user
   },
   userId(state) {
-    return state.user.uid
+    return state.user ? state.user.uid : ''
   },
   userImageURL (state) {
-    return state.user.photoURL
+    return state.user ? state.user.photoURL : ''
   }
 }
 
