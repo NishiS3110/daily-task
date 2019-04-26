@@ -62,10 +62,10 @@
         <v-spacer></v-spacer>
         <v-btn color="blue darken-1" flat @click="closeDialog">閉じる</v-btn>
         <v-btn
-          v-if="isSaveButton"
+          v-if="isAddButton"
           color="blue darken-1"
           flat
-          @click="saveTask">保存
+          @click="addTask">追加
         </v-btn>
         <v-btn
           v-if="isEditButton"
@@ -103,14 +103,6 @@ export default {
       type: Boolean,
       default: false
     },
-    userId: {
-      type: String,
-      required: true
-    },
-    userImageURL: {
-      type: String,
-      default: ""
-    },
     dialogType: {
       type: String,
       required: true
@@ -127,7 +119,7 @@ export default {
     }
   },
   computed: {
-    isSaveButton: function () {
+    isAddButton: function () {
       return this.dialogType === DIALOG_TYPE.ADD
     },
     isEditButton: function () {
@@ -160,17 +152,14 @@ export default {
     closeDialog () {
       this.$emit('close')
     },
-    saveTask () {
-      const data = {
+    addTask () {
+      const task = {
         'title': this.title,
         'detail': this.detail,
         'completed': this.completed,
-        'date': this.date,
-        'userId': this.userId,
-        'userImageURL': this.userImageURL
+        'date': this.date
       }
-      this.$store.dispatch('task/create', data)
-      this.dialog = false
+      this.$emit('addTask', task)
     },
     editTask () {
       const data = {

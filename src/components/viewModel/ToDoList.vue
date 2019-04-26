@@ -3,6 +3,7 @@
     <AddTask
       :userId="userId"
       :userImageURL="userImageURL"
+      @addTask="addTask"
     />
     <TaskList
       v-if="tasks"
@@ -38,8 +39,18 @@ export default {
   },
   methods: {
     ...mapActions('task', [
+      'add',
       'delete'
     ]),
+    addTask (task, callback) {
+      const user = {
+        'userId': this.userId,
+        'userImageURL': this.userImageURL
+      }
+      const addingTask = Object.assign({}, task, user);
+      this.add(addingTask)
+      callback()
+    },
     deleteTask (taskId, callback) {
       const data = {
         'id': taskId
