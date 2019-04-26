@@ -53,11 +53,8 @@ export default {
       this.add(addingTask)
       callback()
     },
-    deleteTask (taskId, callback) {
-      const data = {
-        'id': taskId
-      }
-      this.delete(data)
+    deleteTask (deletingTask, callback) {
+      this.delete(deletingTask)
       callback()
     },
     updateTask (updatingtask, callback) {

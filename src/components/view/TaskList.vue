@@ -97,7 +97,10 @@ export default {
       this.isDeleteTaskDialog = false
     },
     deleteTask () {
-      this.$emit('deleteTask', this.taskId, () => {this.isDeleteTaskDialog = false})
+      const task = {
+        'id': this.taskId
+      }
+      this.$emit('deleteTask', task, () => {this.isDeleteTaskDialog = false})
     },
     updateTask (task) {
       this.$emit('updateTask', task, () => {this.isTaskDialog = false})
