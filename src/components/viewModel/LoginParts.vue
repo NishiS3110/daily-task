@@ -4,16 +4,22 @@
       <v-layout align-center justify-center column>
         <div class="item">
           <v-btn
-            color="success"
-            class="login-button"
-            @click="login">Googleアカウントでログイン
+            color="green"
+            class="login-button white--text"
+            @click="googleLogin">Googleアカウントでログイン
           </v-btn>
+          <p class="login-notice">
+            Googleアカウントは
+            <a href="https://accounts.google.com/SignUp" target="_blank">こちらで</a>
+            作成できます。
+          </p>
         </div>
         <div class="item">
-          <p class="login-notice">
-            ログインにはGoogleアカウントが必要です
-            <a href="https://accounts.google.com/SignUp" target="_blank">Googleアカウント作成</a>
-          </p>
+          <v-btn
+            color="amber"
+            class="login-button white--text"
+            @click="anonymousLogin">匿名アカウントでログイン
+          </v-btn>
         </div>
       </v-layout>
     </div>
@@ -37,37 +43,48 @@ export default {
       canDisplay: false
     }
   },
-  async mounted () {
-    let user = await new Promise((resolve, reject) => {
-      firebase.auth().onAuthStateChanged((user) => resolve(user))
-    })
-
-    this.$store.dispatch('auth/setUser', user)
-    if (user) {
-      this.$router.push('/')
-    } else {
-      this.canDisplay = true
-    }
+  mounted () {
+    this.getUserInfo()
   },
   methods: {
-    login () {
-      this.$store.dispatch('auth/login')
+    googleLogin () {
+      this.$store.dispatch('auth/googleLogin')
+    },
+    anonymousLogin () {
+      this.$store.dispatch('auth/anonymousLogin')
+        .then(() => {
+          this.getUserInfo()
+        })
+        .catch(err => console.log(`Error :${error.message}`))
+    },
+    async getUserInfo () {
+      let user = await new Promise((resolve, reject) => {
+        firebase.auth().onAuthStateChanged((user) => resolve(user))
+      })
+
+      this.$store.dispatch('auth/setUser', user)
+      if (user) {
+        this.$router.push('/')
+      } else {
+        this.canDisplay = true
+      }
     }
   }
 }
 </script>
 
 <style>
-.item {
-  margin: 10px;
+.item:not(:first-child) {
+  margin-top: -10px;
 }
 .login-button {
-  margin-bottom: 20px;
+  width: 250px;
   text-transform: none;
   font-size: 1.2rem;
 }
 .login-notice {
-  font-size: 0.7rem;
+  font-size: 0.5rem;
+  text-align: right;
 }
 .progress-circle {
   text-align: center;
