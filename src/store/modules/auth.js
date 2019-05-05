@@ -20,9 +20,18 @@ const getters = {
 
 // actions
 const actions = {
-  login ({ commit }) {
+  googleLogin ({ commit }) {
     const provider = new firebase.auth.GoogleAuthProvider()
     firebase.auth().signInWithRedirect(provider)
+  },
+  anonymousLogin({ commit }) {
+    return new Promise((resolve, reject) => {
+      firebase.auth().signInAnonymously()
+        .then(() => resolve())
+        .catch(error => {
+          reject(new Error(error))
+      })
+    })
   },
   setUser ({ commit }, payload) {
     commit('setUser', payload)
